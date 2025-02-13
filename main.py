@@ -20,6 +20,17 @@ embeddings_model = OpenAIEmbeddings()
 # 📌 Inicializar FastAPI
 app = FastAPI()
 
+# 📌 Configurar CORS para permitir peticiones desde el frontend
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Reemplaza "*" con el dominio del frontend si es necesario
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 # 📌 URL del CSV con embeddings
 CSV_URL = "https://raw.githubusercontent.com/goDismal/chat-backend/refs/heads/main/EmbeddingsEntrevistas.csv"
 
