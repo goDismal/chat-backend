@@ -43,12 +43,17 @@ def load_embeddings():
     response = requests.get(CSV_URL)
     if response.status_code != 200:
         raise Exception("No se pudo descargar el archivo CSV.")
+
+    # Carga el CSV en un DataFrame de forma optimizada
+    df = pd.read_csv(io.StringIO(response.text), dtype={"Embeddings": str})
     
-    df = pd.read_csv(io.StringIO(response.text))
-    df["Embeddings"] = df["Embeddings"].apply(lambda x: np.array(eval(x)))
+    # Convierte los embeddings en arrays sin cargar toda la columna en memoria
+    df["Embeddings"] = df["Embeddings"].apply(lambda x: np.array(eval(x), dtype=np.float32))
+
     return df
 
 df = load_embeddings()
+
 
 # 📌 Preparar FAISS
 embedding_dim = len(df["Embeddings"].iloc[0])
