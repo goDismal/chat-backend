@@ -4,5 +4,6 @@ pandas
 faiss-cpu
 numpy
 python-dotenv
+langchain
 langchain-openai
 requests
