@@ -37,9 +37,12 @@ def load_embeddings():
 df = load_embeddings()
 
 # 📌 Preparar FAISS para búsqueda rápida
-embedding_dim = df.shape[2]  # Asumimos que la primera columna es texto
+embedding_dim = len(df.iloc[0, -1].split())  # Asumimos que la primera columna es texto
 index = faiss.IndexFlatL2(embedding_dim)
-index.add(np.array(df.iloc[:, 1:].values, dtype=np.float32))  # Añadir embeddings a FAISS
+
+embeddings = np.vstack(df.iloc[:, -1].apply(lambda x: np.fromstring(x.strip("[]"), sep=" ")).to_numpy()).astype(np.float32)
+
+index.add(embeddings)
 
 # 📌 Esquema para recibir preguntas
 class ChatRequest(BaseModel):
