@@ -1,5 +1,4 @@
-fastapi
-uvicorn
+Flask
 pandas
 requests
 faiss-cpu
@@ -7,4 +6,3 @@ numpy
 python-dotenv
 langchain
 langchain-openai
-langchain-community
