@@ -20,7 +20,7 @@ llm = ChatOpenAI(model="gpt-4o-mini", openai_api_key=OPENAI_API_KEY)
 app = FastAPI()
 
 # 📌 URL del archivo CSV con embeddings (¡Reemplaza con la URL correcta!)
-CSV_URL = "https://raw.githubusercontent.com/goDismal/RI-Project-2B/refs/heads/main/EmbeddingsEntrevistas.csv?token=GHSAT0AAAAAAC63PEAEV6Q7QFJTK3P6ZIBKZ5NZRJA"
+CSV_URL = "https://raw.githubusercontent.com/goDismal/chat-backend/refs/heads/main/EmbeddingsEntrevistas.csv"
 
 # 📌 Descargar y cargar el CSV
 def load_embeddings():
