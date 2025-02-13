@@ -3,7 +3,7 @@ pandas
 requests
 faiss-cpu
 numpy
-dotenv
+python-dotenv
 langchain_openai
 langchain.embeddings.openai
 pydantic
