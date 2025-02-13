@@ -1,10 +1,10 @@
 fastapi
+uvicorn
 pandas
 requests
-faiss
+faiss-cpu
 numpy
-os
-dotenv
-langchain_openai
-langchain.embeddings.openai
-pydantic
+python-dotenv
+langchain
+langchain-openai
+langchain-community
