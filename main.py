@@ -4,10 +4,10 @@ import requests
 import faiss
 import numpy as np
 import os
+import io
 from dotenv import load_dotenv
-from langchain_openai import ChatOpenAI
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from pydantic import BaseModel
-from langchain_community.embeddings import OpenAIEmbeddings
 
 # 📌 Cargar la clave de OpenAI
 load_dotenv()
@@ -28,7 +28,7 @@ def load_embeddings():
     if response.status_code != 200:
         raise Exception("No se pudo descargar el archivo CSV.")
     
-    df = pd.read_csv(pd.compat.StringIO(response.text))
+    df = pd.read_csv(io.StringIO(response.text))
     df["Embeddings"] = df["Embeddings"].apply(lambda x: np.array(eval(x)))
     return df
 
