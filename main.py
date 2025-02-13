@@ -37,7 +37,7 @@ def load_embeddings():
 df = load_embeddings()
 
 # 📌 Preparar FAISS para búsqueda rápida
-embedding_dim = df.shape[1] - 1  # Asumimos que la primera columna es texto
+embedding_dim = df.shape[2] - 1  # Asumimos que la primera columna es texto
 index = faiss.IndexFlatL2(embedding_dim)
 index.add(np.array(df.iloc[:, 1:].values, dtype=np.float32))  # Añadir embeddings a FAISS
 
