@@ -9,6 +9,11 @@ from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from pydantic import BaseModel
 
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))  # Render asigna un puerto automáticamente
+    uvicorn.run(app, host="0.0.0.0", port=port)
+
+
 # 📌 Cargar la clave de OpenAI
 load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
